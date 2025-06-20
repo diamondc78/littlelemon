@@ -11,6 +11,7 @@ from rest_framework.permissions import IsAuthenticated
 
 # Vista para listar todos los ítems del menú o crear uno nuevo
 class MenuItemView(ListCreateAPIView):
+    permission_classes = [IsAuthenticated]
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
 
@@ -20,8 +21,10 @@ class SingleMenuItemView(RetrieveUpdateAPIView, DestroyAPIView):
     serializer_class = MenuSerializer
 
 class BookingViewSet(ModelViewSet):
+    permission_classes = [IsAuthenticated]
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
+    
 
 class UserViewSet(ModelViewSet):
    queryset = User.objects.all()
